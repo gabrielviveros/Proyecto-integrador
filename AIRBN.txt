@@ -1,0 +1,17 @@
+import requests
+from bs4 import BeautifulSoup
+r = requests.get('https://www.airbnb.com.ar/')
+soup = BeautifulSoup(r.text, 'lxml')
+
+# Verificar si la solicitud fue exitosa (código de respuesta 200)
+if response.status_code == 200:
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Encontrar todos los elementos HTML que contienen cabaña
+    titulos = soup.find_all('h2', class_='titulo-cabaña')  
+    
+    # Iterar sobre los títulos y mostrarlos
+    for titulo in titulos:
+        print(titulo.text)
+else:
+    print(f'Error al hacer la solicitud. Código de respuesta: {response.status_code}')
